@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./styles.css";
+import { Link } from "react-router-dom";
 
 
 export const PokemonCards = () => {
@@ -8,18 +9,20 @@ export const PokemonCards = () => {
 
     useEffect(() => {
         fetch("https://pokeapi.co/api/v2/pokemon")
-        .then((res) => res.json())
-        .then((data)=>setAllPokemons(data.results));
+            .then((res) => res.json())
+            .then((data) => setAllPokemons(data.results));
     }, []);
 
-    return(
+    console.log("resim", allPokemons);
+
+    return (
         <div className="pokecards-container">
-       
-                {allPokemons.map((pokemon)=>(
-                    <>
-                    <div key={pokemon.name} className="pokemon-card">{pokemon.name.toUpperCase()}</div>
-                    </>
-                ))}
+
+            {allPokemons.map((pokemon) => (
+                <Link to={`pokemons/${pokemon.name}/details`} key={pokemon.name} className="pokemon-card">
+                    <div>{pokemon.name.toUpperCase()}</div>
+                </Link>
+            ))}
         </div>
     )
 }

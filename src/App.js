@@ -1,10 +1,10 @@
 import './App.css';
-import { PokemonCards } from './components/PokemonCards';
+import { Approuter } from  "./AppRouter";
 
 export const App = () =>{
   return (
     <div className="app">
-      <PokemonCards />
+      <Approuter />
     </div>
   );
 }
